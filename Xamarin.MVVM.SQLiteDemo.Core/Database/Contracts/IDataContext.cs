@@ -1,4 +1,6 @@
-﻿namespace Xamarin.MVVM.SQLiteDemo.Core.Database.Contracts
+﻿using SQLite.Net.Async;
+
+namespace Xamarin.MVVM.SQLiteDemo.Core.Database.Contracts
 {
 	public interface IDataContext
 	{

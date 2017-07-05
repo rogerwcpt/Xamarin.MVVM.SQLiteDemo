@@ -2,13 +2,13 @@
 {
   public class TodoItem
   {
-    public TodoItem(string name, bool done)
-    {
-      Name = name;
-      Done = done;
-    }
+	    public TodoItem(string name, bool done)
+	    {
+	      Name = name;
+	      Done = done;
+	    }
 
-    public string Name { get; }
-    public bool Done { get; }
+        public string Name { get; set; }
+        public bool Done { get; set; }
   }
 }

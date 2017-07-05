@@ -1,8 +1,14 @@
-﻿using MvvmCross.Core.ViewModels;
+﻿using Aliens.MegaU.iOS.Platform;
+
+using MvvmCross.Core.ViewModels;
 using MvvmCross.iOS.Platform;
 using MvvmCross.iOS.Views.Presenters;
+using MvvmCross.Platform;
 using MvvmCross.Platform.Platform;
+
 using UIKit;
+using Xamarin.MVVM.SQLiteDemo.Core.Database.Contracts;
+using Xamarin.MVVM.SQLiteDemo.Core.Platform;
 
 namespace Xamarin.MVVM.SQLiteDemo.iOS
 {
@@ -22,6 +28,20 @@ namespace Xamarin.MVVM.SQLiteDemo.iOS
         {
             return new Core.App();
         }
+
+        protected override void InitializeIoC()
+        {
+            base.InitializeIoC();
+
+            Mvx.LazyConstructAndRegisterSingleton<IDbProvider, SqliteProvider>();
+			Mvx.CallbackWhenRegistered<IDatabaseManager>(DatabaseManagerRegistered);
+
+		}
+
+		private void DatabaseManagerRegistered(IDatabaseManager databaseManager)
+		{
+			databaseManager.InitializeDatabase("1.0");
+		}
 
         protected override IMvxTrace CreateDebugTrace()
         {

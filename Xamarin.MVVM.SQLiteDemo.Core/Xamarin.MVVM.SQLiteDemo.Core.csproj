@@ -69,6 +69,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\FirstViewModel.cs" />
     <Compile Include="ViewModels\Items\TodoItem.cs" />
+    <Compile Include="ViewModels\AddEntryViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Database\" />

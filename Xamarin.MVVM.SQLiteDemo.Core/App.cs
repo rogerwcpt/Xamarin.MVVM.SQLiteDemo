@@ -1,4 +1,8 @@
-﻿using MvvmCross.Platform.IoC;
+﻿using MvvmCross.Platform;
+using MvvmCross.Platform.IoC;
+using MvvmCross.Platform.Platform;
+using Xamarin.MVVM.SQLiteDemo.Core.Database.Contracts;
+using Xamarin.MVVM.SQLiteDemo.Core.Database;
 
 namespace Xamarin.MVVM.SQLiteDemo.Core
 {
@@ -6,22 +10,14 @@ namespace Xamarin.MVVM.SQLiteDemo.Core
     {
         public override void Initialize()
         {
-          CreatableTypes()
-                .EndingWith("Service")
-                .AsInterfaces()
-                .RegisterAsLazySingleton();
-          
-          CreatableTypes()
-            .EndingWith("Manager")
-            .AsInterfaces()
-            .RegisterAsLazySingleton();          
-          
-          CreatableTypes()
-            .EndingWith("Repository")
-            .AsInterfaces()
-            .RegisterAsLazySingleton();
+            base.Initialize();
 
-            RegisterAppStart<ViewModels.FirstViewModel>();
+            Mvx.LazyConstructAndRegisterSingleton<IDataContext, DataContext>();
+			Mvx.LazyConstructAndRegisterSingleton<ITodoRepository, TodoRepository>();
+            Mvx.LazyConstructAndRegisterSingleton<IVersionInfoRepository, VersionInfoRepository>();
+			Mvx.LazyConstructAndRegisterSingleton<IDatabaseManager, DatabaseManager>();
+
+			RegisterAppStart<ViewModels.FirstViewModel>();
         }
     }
 }
