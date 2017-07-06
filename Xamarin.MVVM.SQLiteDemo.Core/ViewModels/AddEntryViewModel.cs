@@ -1,33 +1,21 @@
-﻿using System.Threading.Tasks;
-using MvvmCross.Core.ViewModels;
-using Xamarin.MVVM.SQLiteDemo.Core.Database;
-using Xamarin.MVVM.SQLiteDemo.Core.Database.Models;
+﻿using MvvmCross.Core.ViewModels;
+using Xamarin.MVVM.SQLiteDemo.Core.ViewModels.Items;
 namespace Xamarin.MVVM.SQLiteDemo.Core.ViewModels
 {
-    public class AddEntryViewModel: MvxViewModel
+    public class AddEntryViewModel: MvxViewModelResult<TodoItem>
     {
-        private readonly ITodoRepository _todoRepo;
-
-        public AddEntryViewModel(ITodoRepository todoRepo)
+        public AddEntryViewModel()
         {
-            _todoRepo = todoRepo;
-            SaveCommand = new MvxAsyncCommand(DoSaveCommandAsync);
+            SaveCommand = new MvxCommand(DoSaveCommand);
         }
 
 		public string ItemName { get; set; }
-		public MvxAsyncCommand SaveCommand { get; }
+		public MvxCommand SaveCommand { get; }
 
-
-        private async Task DoSaveCommandAsync()
+        private void DoSaveCommand()
         {
-            var todo = new Todo()
-            {
-                Name = ItemName
-            };
-
-            await _todoRepo.InsertOrUpdate(todo);
-
-            Close(this);
+            var todoItem = new TodoItem(0, ItemName, false);
+            Close(todoItem);
         }
     }
 }

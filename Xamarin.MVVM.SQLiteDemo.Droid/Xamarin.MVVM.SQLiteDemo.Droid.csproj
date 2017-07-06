@@ -136,6 +136,7 @@
     <Reference Include="MvvmCross.Plugins.File.Droid">
       <HintPath>..\packages\MvvmCross.Plugin.File.5.0.5\lib\MonoAndroid\MvvmCross.Plugins.File.Droid.dll</HintPath>
     </Reference>
+    <Reference Include="Mono.Data.Sqlite" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Xamarin.MVVM.SQLiteDemo.Core\Xamarin.MVVM.SQLiteDemo.Core.csproj">
@@ -168,6 +169,7 @@
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\values-v21\styles.xml" />
     <AndroidResource Include="Resources\layout\listview_item_row.axml" />
+    <AndroidResource Include="Resources\layout\AddEntry.axml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -185,6 +187,7 @@
     <Compile Include="Views\BaseView.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Bootstrap\FilePluginBootstrap.cs" />
+    <Compile Include="Views\AddEntryView.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\AboutAssets.txt" />

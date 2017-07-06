@@ -1,14 +1,29 @@
-﻿namespace Xamarin.MVVM.SQLiteDemo.Core.ViewModels.Items
+﻿using MvvmCross.Core.ViewModels;
+namespace Xamarin.MVVM.SQLiteDemo.Core.ViewModels.Items
 {
-  public class TodoItem
+    public class TodoItem: MvxNotifyPropertyChanged
   {
-	    public TodoItem(string name, bool done)
-	    {
-	      Name = name;
-	      Done = done;
-	    }
+		private bool _done;
 
+        public TodoItem()
+        {
+        }
+
+
+        public TodoItem(int id, string name, bool done)
+        {
+            Id = id;
+            Name = name;
+          Done = done;
+        }
+
+		public int Id { get;  }
         public string Name { get; set; }
-        public bool Done { get; set; }
-  }
+
+        public bool Done
+        {
+            get { return _done; }
+            set { SetProperty(ref _done, value); }
+        }
+    }
 }

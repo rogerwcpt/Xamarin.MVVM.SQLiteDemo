@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <android.support.design.widget.AppBarLayout
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:MvxBind="BackgroundColor PanelColor, Converter=NativeColor"
+        android:minWidth="25px"
+        android:minHeight="25px">
+        <Button
+            android:text="Add To do"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:MvxBind="Click AddEntry" />
+    </LinearLayout>
+    <Mvx.MvxListView
         android:layout_width="match_parent"
-        android:id="@+id/toolbar_layout">
-        <include
-            android:id="@+id/toolbar"
-            layout="@layout/toolbar"
-            app:layout_scrollFlags="scroll|enterAlways" />
-    </android.support.design.widget.AppBarLayout>
-    <MvxListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:padding="10dp"
         android:id="@+id/listDetails"
         app:MvxBind="ItemsSource Items"
         app:MvxItemTemplate="@layout/listview_item_row" />
-</RelativeLayout>
+</LinearLayout>

@@ -12,7 +12,7 @@ namespace Xamarin.MVVM.SQLiteDemo.Droid.Views
         {
             base.OnCreate(bundle);
 
-            SupportActionBar.SetDisplayHomeAsUpEnabled(false);
+            //SupportActionBar.SetDisplayHomeAsUpEnabled(false);
         }
     }
 }
